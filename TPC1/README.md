@@ -3,9 +3,6 @@
 ## Autor
 Vasco Manuel Araújo Andrade de Oliveira
 
-## Número
-pg54269
-
 ## Data
 19/02/2023
 
