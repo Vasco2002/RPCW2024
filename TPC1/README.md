@@ -17,7 +17,7 @@ RPCW
 Este trabalho teve como objetivo criar uma Ontologia a partir dos dados do ficheiro `plantas.json`. Como tal, comecei por identificar quais seriam as classes
 da Ontologia e de seguida atribui os atributos às respetivas classes e as ligações entre as classes. Foram criadas as classes "Plantas" (sendo a classe principal desta Ontologia, contendo OPs com as outras classes e os restantes DPs), "Rua" 
 (contendo uma OP com a classe Planta, e as DPs relacionadas com ruas) e "Espécie" (Contendo as DPs "Espécie" e "Nome Científico").
-Para o atributo "Rua", existiam casos onde havia uma " a mais, sendo esta removida com a função `replace`. Também haviam casos onde não existia "Código de rua", onde passaram a
+Para o atributo "Rua", existiam casos onde havia uma " a mais, sendo esta removida com a função *replace*. Também haviam casos onde não existia "Código de rua", onde passaram a
 ficar guardados no indivíduo "Sem_Código_de_rua". Nos casos onde a "Espécie" não é identificada, igualei os valores "a identificar" e
 "A identificar", pois têm o mesmo significado.
 
