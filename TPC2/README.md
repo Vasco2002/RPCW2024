@@ -21,7 +21,7 @@ através da função `tipo_instrumento` que contem as listas dos nomes dos instr
 
 - A classe Curso, que contem duas subclasses disjuntas Básico e Supletivo. Um curso é considerado Básico quando o seu nome começa com "CB" e Supletivo quando começa com
 "CS", sendo esta classificação feita através da função `tipo_curso`. A classe tem uma OP com a classe Instrumento (o instrumento que o curso ensina) e as OPs de todos os 
-Alunos que o Curso tenha, e três DPs ("curso","designacao","duracao")
+Alunos que o Curso tenha, e três DPs ("curso", "designacao", "duracao")
 
 O dataset `db.json` tinha alguns erros ao identificar o curso dos alunos, mais particularmente dar a grande parte dos cursos supletivos o mesmo número que os cursos básicos
 que ensinavam o mesmo instrumento.
