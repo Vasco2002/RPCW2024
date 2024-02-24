@@ -1,0 +1,217 @@
+@prefix : <http://www.semanticweb.org/vasco/ontologies/2024/1/untitled-ontology-10/> .
+@prefix owl: <http://www.w3.org/2002/07/owl#> .
+@prefix rdf: <http://www.w3.org/1999/02/22-rdf-syntax-ns#> .
+@prefix xml: <http://www.w3.org/XML/1998/namespace> .
+@prefix xsd: <http://www.w3.org/2001/XMLSchema#> .
+@prefix rdfs: <http://www.w3.org/2000/01/rdf-schema#> .
+@base <http://www.semanticweb.org/vasco/ontologies/2024/1/untitled-ontology-10/> .
+
+<http://rpcw.di.uminho.pt/2024/escola_musica> rdf:type owl:Ontology .
+
+#################################################################
+#    Object Properties
+#################################################################
+
+###  http://rpcw.di.uminho.pt/2024/escola_musica#ensinaInstrumento
+:ensinaInstrumento rdf:type owl:ObjectProperty ;
+                   rdfs:domain :Curso ;
+                   rdfs:range :Instrumento .
+
+
+###  http://rpcw.di.uminho.pt/2024/escola_musica#pertenceCurso
+:pertenceCurso rdf:type owl:ObjectProperty ;
+               owl:inverseOf :temCurso ;
+               rdfs:domain :Curso ;
+               rdfs:range :Aluno .
+
+
+###  http://rpcw.di.uminho.pt/2024/escola_musica#temCurso
+:temCurso rdf:type owl:ObjectProperty ;
+          rdfs:domain :Aluno ;
+          rdfs:range :Curso .
+
+
+###  http://rpcw.di.uminho.pt/2024/escola_musica#temInstrumento
+:temInstrumento rdf:type owl:ObjectProperty ;
+                rdfs:domain :Aluno ;
+                rdfs:range :Instrumento .
+
+
+###  http://rpcw.di.uminho.pt/2024/escola_musica#temTipo
+:temTipo rdf:type owl:ObjectProperty ;
+         rdfs:domain :Instrumento ;
+         rdfs:range :Tipo .
+
+
+#################################################################
+#    Data properties
+#################################################################
+
+###  http://rpcw.di.uminho.pt/2024/escola_musica#anoCurso
+:anoCurso rdf:type owl:DatatypeProperty ;
+          rdfs:domain :Aluno ;
+          rdfs:range xsd:int .
+
+
+###  http://rpcw.di.uminho.pt/2024/escola_musica#curso
+:curso rdf:type owl:DatatypeProperty ;
+       rdfs:domain :Curso ;
+       rdfs:range xsd:string .
+
+
+###  http://rpcw.di.uminho.pt/2024/escola_musica#dataNasc
+:dataNasc rdf:type owl:DatatypeProperty ;
+          rdfs:domain :Aluno ;
+          rdfs:range xsd:string .
+
+
+###  http://rpcw.di.uminho.pt/2024/escola_musica#designacao
+:designacao rdf:type owl:DatatypeProperty ;
+            rdfs:domain :Curso ;
+            rdfs:range xsd:string .
+
+
+###  http://rpcw.di.uminho.pt/2024/escola_musica#duracao
+:duracao rdf:type owl:DatatypeProperty ;
+         rdfs:domain :Curso ;
+         rdfs:range xsd:int .
+
+
+###  http://rpcw.di.uminho.pt/2024/escola_musica#id
+:id rdf:type owl:DatatypeProperty ;
+    rdfs:domain :Aluno ;
+    rdfs:range xsd:string .
+
+
+###  http://rpcw.di.uminho.pt/2024/escola_musica#id_instrumento
+:id_instrumento rdf:type owl:DatatypeProperty ;
+                rdfs:domain :Instrumento ;
+                rdfs:range xsd:string .
+
+
+###  http://rpcw.di.uminho.pt/2024/escola_musica#instrumento
+:instrumento rdf:type owl:DatatypeProperty ;
+             rdfs:domain :Instrumento ;
+             rdfs:range xsd:string .
+
+
+###  http://rpcw.di.uminho.pt/2024/escola_musica#nome
+:nome rdf:type owl:DatatypeProperty ;
+      rdfs:domain :Aluno ;
+      rdfs:range xsd:string .
+
+
+#################################################################
+#    Classes
+#################################################################
+
+###  http://rpcw.di.uminho.pt/2024/escola_musica#Aluno
+:Aluno rdf:type owl:Class .
+
+
+###  http://rpcw.di.uminho.pt/2024/escola_musica#Básico
+:Básico rdf:type owl:Class ;
+        rdfs:subClassOf :Curso ;
+        owl:disjointWith :Supletivo .
+
+
+###  http://rpcw.di.uminho.pt/2024/escola_musica#Cordas
+:Cordas rdf:type owl:Class ;
+        rdfs:subClassOf :Tipo .
+
+
+###  http://rpcw.di.uminho.pt/2024/escola_musica#Curso
+:Curso rdf:type owl:Class .
+
+
+###  http://rpcw.di.uminho.pt/2024/escola_musica#Instrumento
+:Instrumento rdf:type owl:Class ;
+             owl:equivalentClass [ rdf:type owl:Restriction ;
+                                   owl:onProperty :temTipo ;
+                                   owl:qualifiedCardinality "1"^^xsd:nonNegativeInteger ;
+                                   owl:onClass :Tipo
+                                 ] .
+
+
+###  http://rpcw.di.uminho.pt/2024/escola_musica#Outro
+:Outro rdf:type owl:Class ;
+       rdfs:subClassOf :Tipo .
+
+
+###  http://rpcw.di.uminho.pt/2024/escola_musica#Sopro
+:Sopro rdf:type owl:Class ;
+       rdfs:subClassOf :Tipo .
+
+
+###  http://rpcw.di.uminho.pt/2024/escola_musica#Supletivo
+:Supletivo rdf:type owl:Class ;
+           rdfs:subClassOf :Curso .
+
+
+###  http://rpcw.di.uminho.pt/2024/escola_musica#Tipo
+:Tipo rdf:type owl:Class ;
+      rdfs:subClassOf :Instrumento .
+
+
+#################################################################
+#    Individuals
+#################################################################
+
+###  http://rpcw.di.uminho.pt/2024/escola_musica#A1510
+:A1510 rdf:type owl:NamedIndividual ,
+                :Aluno ;
+       :temCurso :CB8 ;
+       :temInstrumento :Guitarra ;
+       :anoCurso "5"^^xsd:int ;
+       :dataNasc "2004-9-5" ;
+       :id "A1510" ;
+       :nome "ADEMAR FONTES DE MAGALHAES GONÇALVES" .
+
+
+###  http://rpcw.di.uminho.pt/2024/escola_musica#CB8
+:CB8 rdf:type owl:NamedIndividual ,
+              :Básico ;
+     :ensinaInstrumento :Guitarra ;
+     :pertenceCurso :A1510 ;
+     :curso "CB8" ;
+     :designacao "Curso Básico de Guitarra" ;
+     :duracao "5"^^xsd:int .
+
+
+###  http://rpcw.di.uminho.pt/2024/escola_musica#CS37
+:CS37 rdf:type owl:NamedIndividual ,
+               :Supletivo ;
+      :ensinaInstrumento :Trombone ;
+      :pertenceCurso :A1510 ;
+      :curso "CS37" ;
+      :designacao "Curso Supletivo de Trombone" ;
+      :duracao "3"^^xsd:int .
+
+
+###  http://rpcw.di.uminho.pt/2024/escola_musica#Guitarra
+:Guitarra rdf:type owl:NamedIndividual ,
+                   :Cordas ;
+          :id_instrumento "I8" ;
+          :instrumento "Guitarra" .
+
+
+###  http://rpcw.di.uminho.pt/2024/escola_musica#Trombone
+:Trombone rdf:type owl:NamedIndividual ,
+                   :Sopro ;
+          :id_instrumento "I15" ;
+          :instrumento "Trombone" .
+
+
+#################################################################
+#    General axioms
+#################################################################
+
+[ rdf:type owl:AllDisjointClasses ;
+  owl:members ( :Cordas
+                :Outro
+                :Sopro
+              )
+] .
+
+
+###  Generated by the OWL API (version 4.5.26.2023-07-17T20:34:13Z) https://github.com/owlcs/owlapi
