@@ -1,0 +1,49 @@
+Prefixos:
+
+PREFIX mapa: <http://www.semanticweb.org/vasco/ontologies/2024/2/mapa-virtual/>
+PREFIX rdf: <http://www.w3.org/1999/02/22-rdf-syntax-ns#>
+PREFIX owl: <http://www.w3.org/2002/07/owl#>
+
+---------------------------------------------------------------------
+
+Quais as cidades de um determinado distrito?
+
+SELECT ?cidade WHERE {
+    ?cidade rdf:type mapa:Cidade ;
+            mapa:distrito "Braga" .
+}
+
+---------------------------------------------------------------------
+
+Distribuição de cidades por distrito?
+
+SELECT ?distrito (COUNT(?cidade) as ?numCidades) WHERE {
+    ?cidade rdf:type mapa:Cidade .
+    ?cidade mapa:distrito ?distrito .
+}
+GROUP BY ?distrito
+
+---------------------------------------------------------------------
+
+Quantas cidades se podem atingir a partir do Porto?
+
+SELECT DISTINCT ?destino WHERE {
+    ?cidade rdf:type mapa:Cidade ;
+            mapa:distrito "Porto" .
+    
+    ?ligacao rdf:type mapa:Ligação ;
+             mapa:origem ?cidade ;
+             mapa:destino ?destino .
+}
+
+---------------------------------------------------------------------
+
+Quais as cidades com população acima de um determinado valor?
+
+SELECT ?cidade ?populacao WHERE {
+  ?cidade rdf:type mapa:Cidade ;
+          mapa:população ?populacao .
+  FILTER (?populacao > 457102)
+}
+
+---------------------------------------------------------------------

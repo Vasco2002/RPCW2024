@@ -4,7 +4,7 @@
 Vasco Manuel Araújo Andrade de Oliveira
 
 ## Data
-19/02/2023
+19/02/2024
 
 ## UC
 RPCW
@@ -22,7 +22,7 @@ ficar guardados no indivíduo "Sem_Código_de_rua". Nos casos onde a "Espécie" 
 
 - [`plantas.json`](plantas.json): Arquivo *JSON*, fornecido pelo professor, contendo dados sobre plantas. 
 
-- [`exemplo.ttl`](exemplo.ttl): Arquivo *Turtle*, criado através do programa *Protege*, com a Estrutura da Ontologia e a construção de um indivíduo para cada classe distinta.
+- [`exemplo.ttl`](exemplo.ttl): Arquivo *Turtle*, criado através do programa *Protege*, com a Estrutura da Ontologia e a construção de um indivíduo exemplar para cada classe distinta.
 
 - [`geraPlanta.py`](geraPlanta.py): *Script* em *Python* usado para popular a Ontologia com indivíduos através dos dados do ficheiro `plantas.json`.
 

@@ -4,14 +4,14 @@
 Vasco Manuel Araújo Andrade de Oliveira
 
 ## Data
-24/02/2023
+24/02/2024
 
 ## UC
 RPCW
 
 ### Resumo
 
-Foram cridas três classes:
+Foram criadas três classes:
 
 - A classe Aluno, contendo duas OPs com as classes Curso (ao qual pertence) e Instrumento (que possui) e quatro DPs ("id", "nome", "anoCurso", "dataNasc").
 
@@ -30,7 +30,7 @@ que ensinavam o mesmo instrumento.
 
 - [`db.json`](db.json): Arquivo *JSON*, fornecido pelo professor, contendo dados sobre a escola de música. 
 
-- [`musica.ttl`](musica.ttl): Arquivo *Turtle*, criado através do programa *Protege*, com a Estrutura da Ontologia e a construção de um indivíduo para cada classe distinta.
+- [`musica.ttl`](musica.ttl): Arquivo *Turtle*, criado através do programa *Protege*, com a Estrutura da Ontologia e a construção de um indivíduo exemplar para cada classe distinta.
 
 - [`geraEscolaMusica.py`](geraEscolaMusica.py): *Script* em *Python* usado para popular a Ontologia com indivíduos através dos dados do ficheiro `db.json`.
 
