@@ -23,31 +23,33 @@ Tema: Cinema
 
 Para esse efeito foi usado a *DBPedia* realizando a seguinte query para obter todos os dados pedidos, menos os argumentistas (porque não eram dados):
 
-SELECT ?film ?filmName ?actorName ?directorName ?writerName ?musicianName WHERE {
+SELECT DISTINCT ?film ?filmName ?actorName ?directorName ?writerName ?musicianName
+WHERE {
   ?film a dbo:Film ;
         rdfs:label ?filmName .
   OPTIONAL { 
     ?film dbo:starring ?actor .
     ?actor rdfs:label ?actorName .
+    FILTER (lang(?actorName) = "en")
   }
   OPTIONAL { 
     ?film dbo:director ?director .
     ?director rdfs:label ?directorName .
+    FILTER (lang(?directorName) = "en")
   }
   OPTIONAL { 
     ?film dbo:writer ?writer .
     ?writer rdfs:label ?writerName .
+    FILTER (lang(?writerName) = "en")
   }
   OPTIONAL { 
     ?film dbo:musicComposer ?musician .
     ?musician rdfs:label ?musicianName .
+    FILTER (lang(?musicianName) = "en")
   }
   FILTER (lang(?filmName) = "en")
-  FILTER (lang(?actorName) = "en")
-  FILTER (lang(?directorName) = "en")
-  FILTER (lang(?writerName) = "en")
-  FILTER (lang(?musicianName) = "en")
 }
+
 
 Por fim foi feito uma script `dbpedia_films.py`, que usa os dados fornecidos pela query e mete-os no ficheiro json `cinema.json`, pondo todos os atores,
 diretores, músicos e escritores em listas numa só única entrada para cada filme.

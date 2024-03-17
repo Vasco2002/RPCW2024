@@ -14,24 +14,24 @@ WHERE {
   OPTIONAL { 
     ?film dbo:starring ?actor .
     ?actor rdfs:label ?actorName .
+    FILTER (lang(?actorName) = "en")
   }
   OPTIONAL { 
     ?film dbo:director ?director .
     ?director rdfs:label ?directorName .
+    FILTER (lang(?directorName) = "en")
   }
   OPTIONAL { 
     ?film dbo:writer ?writer .
     ?writer rdfs:label ?writerName .
+    FILTER (lang(?writerName) = "en")
   }
   OPTIONAL { 
     ?film dbo:musicComposer ?musician .
     ?musician rdfs:label ?musicianName .
+    FILTER (lang(?musicianName) = "en")
   }
   FILTER (lang(?filmName) = "en")
-  FILTER (lang(?actorName) = "en")
-  FILTER (lang(?directorName) = "en")
-  FILTER (lang(?writerName) = "en")
-  FILTER (lang(?musicianName) = "en")
 }
 
 """
