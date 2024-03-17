@@ -60,5 +60,9 @@ Aqui apresentam-se os ficheiros acrescentados ou modificados ao trabalho já fei
 
 - [`dbpedia_films.py`](dbpedia_films.py): Arquivo Python que realiza consultas à DBpedia sobre filmes e as pessoas que participam nele, e armazena esses dados num arquivo JSON. 
 
-- [`cinema.json`](cinema.json): Arquivo JSON usado para guardar a informação fornecida pelo arquivo dbpedia_films.
+- [`cinema.json`](cinema.json): Arquivo JSON usado para guardar a informação fornecida pelo arquivo `dbpedia_films.py`.
+
+- [`dbpedia_films2.py`](dbpedia_films2.py): Arquivo Python igual ao arquivo `dbpedia_films.py` mas fica a fazer pedidos à DBPedia até dar erro.
+
+- [`cinema2.json`](cinema2.json): Arquivo JSON usado para guardar a informação fornecida pelo arquivo `dbpedia_films2.py`.
 
