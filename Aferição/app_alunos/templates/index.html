@@ -1,0 +1,31 @@
+<!DOCTYPE html>
+<html>
+    <header>
+        <meta charset="utf-8"/>
+        <title>Alunos</title>
+        <link rel="icon" href="{{ url_for('static', filename='favicon2.png') }}"/>
+        <link rel="stylesheet" href="{{ url_for('static', filename='styles/w3.css') }}"/>
+        <style>
+            .w3-button {
+                font-weight: bold;
+            }
+        </style>
+    </header>
+    <body>
+        <div class="w3-card-4">
+            <header class="w3-container w3-purple">
+                <h1>Alunos 2024</h1>
+            </header>
+
+            <div class="w3-container">
+                <div class="w3-bar-block w3-center">
+                    <a href="/" class="w3-button w3-border-bottom">Alunos</a>
+                </div>
+            </div>
+
+            <footer class="w3-container w3-purple">
+                <h5>Gerado por Basco Olibeira em {{ data.data }}</h5>
+            </footer>
+        </div>
+    </body>
+</html>

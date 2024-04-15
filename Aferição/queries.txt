@@ -1,0 +1,97 @@
+#Quantos alunos estão registados? (inteiro)
+
+PREFIX : <http://www.semanticweb.org/vasco/ontologies/2024/3/alunos/>
+PREFIX rdf: <http://www.w3.org/1999/02/22-rdf-syntax-ns#>
+
+SELECT (COUNT(?s) AS ?num)
+WHERE {
+  ?s rdf:type :Aluno .
+}
+
+-----------------------------------------------------------------------
+
+#Quantos alunos frequentam o curso "LCC"? (inteiro)
+
+PREFIX : <http://www.semanticweb.org/vasco/ontologies/2024/3/alunos/>
+PREFIX rdf: <http://www.w3.org/1999/02/22-rdf-syntax-ns#>
+
+SELECT (COUNT(?aluno) AS ?numAlunos)
+WHERE {
+    ?aluno rdf:type :Aluno .
+	?aluno :curso "LCC" .
+}
+
+-----------------------------------------------------------------------
+
+#Que alunos tiveram nota positiva no exame de época normal? (lista ordenada alfabeticamente
+#por nome com: idAluno, nome, curso, nota do exame);
+
+PREFIX : <http://www.semanticweb.org/vasco/ontologies/2024/3/alunos/>
+PREFIX rdf: <http://www.w3.org/1999/02/22-rdf-syntax-ns#>
+
+SELECT ?idAluno ?nome ?curso ?nota_exame_normal
+WHERE {
+  ?aluno rdf:type :Aluno;
+  		 :nome ?nome ;
+         :idAluno ?idAluno ;
+         :curso ?curso .
+  
+  OPTIONAL {?aluno :fezExame ?exame.
+            ?exame rdf:type :Normal;
+                  :nota_exame ?nota_exame_normal .  }
+  FILTER(?nota_exame_normal >= 10)
+}
+ORDER BY ASC(?nome)
+
+-----------------------------------------------------------------------
+
+#Qual a distribuição dos alunos pelas notas do projeto? (lista com: nota e número de alunos que
+#obtiveram essa nota)
+
+PREFIX : <http://www.semanticweb.org/vasco/ontologies/2024/3/alunos/>
+PREFIX rdf: <http://www.w3.org/1999/02/22-rdf-syntax-ns#>
+
+SELECT ?nota_projeto (COUNT(?aluno) AS ?num_alunos)
+WHERE {
+  ?aluno rdf:type :Aluno .
+  ?aluno :nota_projeto ?nota_projeto .
+}
+GROUP BY ?nota_projeto
+ORDER BY ?nota_projeto
+
+-----------------------------------------------------------------------
+
+#Quais os alunos mais trabalhadores durante o semestre? (lista ordenada por ordem
+#decrescente do total: idAluno, nome, curso, total = somatório dos resultados dos TPC)
+
+PREFIX : <http://www.semanticweb.org/vasco/ontologies/2024/3/alunos/>
+PREFIX rdf: <http://www.w3.org/1999/02/22-rdf-syntax-ns#>
+
+SELECT ?idAluno ?nome ?curso (SUM(?nota_tpc) AS ?total)
+WHERE {
+  ?aluno rdf:type :Aluno ;
+  		 :idAluno ?idAluno ;
+  		 :nome ?nome ;
+  		 :curso ?curso ;
+  		 :fezTPC ?tpc .
+  ?tpc :nota_tpc ?nota_tpc .
+}
+GROUP BY ?idAluno ?nome ?curso
+ORDER BY DESC(?total)
+
+-----------------------------------------------------------------------
+
+#Qual a distribuição dos alunos pelos vários cursos? (lista de cursos, ordenada alfabeticamente
+#por curso, com: curso, número de alunos nesse curso)
+
+PREFIX : <http://www.semanticweb.org/vasco/ontologies/2024/3/alunos/>
+PREFIX rdf: <http://www.w3.org/1999/02/22-rdf-syntax-ns#>
+
+SELECT ?curso (COUNT(?aluno) AS ?num_alunos)
+WHERE {
+  ?aluno rdf:type :Aluno ;
+  		 :curso ?curso .
+}
+GROUP BY ?curso
+ORDER BY ASC(?curso)
+
