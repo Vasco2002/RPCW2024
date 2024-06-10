@@ -64,20 +64,22 @@ ORDER BY ?nota_projeto
 #Quais os alunos mais trabalhadores durante o semestre? (lista ordenada por ordem
 #decrescente do total: idAluno, nome, curso, total = somatório dos resultados dos TPC)
 
-PREFIX : <http://www.semanticweb.org/vasco/ontologies/2024/3/alunos/>
 PREFIX rdf: <http://www.w3.org/1999/02/22-rdf-syntax-ns#>
+PREFIX : <http://www.semanticweb.org/vasco/ontologies/2024/4/mapa-virtual/>
 
-SELECT ?idAluno ?nome ?curso (SUM(?nota_tpc) AS ?total)
-WHERE {
-  ?aluno rdf:type :Aluno ;
-  		 :idAluno ?idAluno ;
-  		 :nome ?nome ;
-  		 :curso ?curso ;
-  		 :fezTPC ?tpc .
-  ?tpc :nota_tpc ?nota_tpc .
+SELECT DISTINCT ?cidade WHERE {
+    ?braga :nome "Braga" .
+   
+    {
+        ?ligacao :origem ?braga ;
+                 :destino ?cidade .
+    }
+    UNION
+    {
+        ?ligacao :origem ?cidade ;
+                 :destino ?braga .
+    }
 }
-GROUP BY ?idAluno ?nome ?curso
-ORDER BY DESC(?total)
 
 -----------------------------------------------------------------------
 
